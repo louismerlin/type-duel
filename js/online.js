@@ -47,6 +47,7 @@ function hide(){
 }
 
 function onReceive(data) {
+    inputString = "";
     if (data == "$0"){
       turn = 0;
       input.style.display = "none";
@@ -65,7 +66,8 @@ function onReceive(data) {
         thisPlayer = players[0];
         otherPlayer = players[1];
     } else {
-        output.innerHTML = data;
+        output.innerHTML = fillOutput(data);
+        befW = data;
         turn = 1;
     }
 }

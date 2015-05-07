@@ -1,2 +1,2 @@
 # type-duel
-A fun typing game !
+Challenge a friend to a game of Type Duel!
