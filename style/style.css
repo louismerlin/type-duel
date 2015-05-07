@@ -15,6 +15,10 @@ p {
     font-size:20px;
 }
 
+input {
+  font-family: "Courier New", Courier, monospace;
+}
+
 #game{
 	text-align: center;
   left:50%;
@@ -83,4 +87,11 @@ input{
 	position: absolute;
 	left:50%;
 	top:320px;
+}
+
+#signature{
+  position: fixed;
+  bottom: 0;
+  right: 20px;
+  color: grey;
 }
