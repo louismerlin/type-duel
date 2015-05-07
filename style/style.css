@@ -1,0 +1,85 @@
+h1 {
+    color: black;
+    font-size: 50px;
+    text-align:center;
+
+}
+
+body {
+	background-color: #F5F5F5;
+	font-family: "Courier New", Courier, monospace;
+}
+
+p {
+    color: black;
+    font-size:20px;
+}
+
+#game{
+	text-align: center;
+	margin-left:-200px;
+	position: absolute;
+}
+
+#menu{
+	width:200px;
+	height:100px;
+	left:50%;
+  top:30%;
+	margin-left:-100px;
+	position:absolute;
+	background-color:lightgrey;
+}
+
+#pause{
+  text-align: center;
+}
+
+button{
+	border: 0px outset;
+    color: #61988E;
+	background-color: #c0ccb7;
+}
+
+input{
+	border: 0px outset;
+	background-color: #c0ccb7;
+	text-align: center;
+}
+
+#keyH{
+	position:absolute;
+	left:52%;
+	width:45%;
+	top:5%;
+	height:40%;
+}
+#keyC{
+	position:absolute;
+	left:2%;
+	width:45%;
+	top:5%;
+	height:40%;
+}
+
+
+#hostB{
+	position:absolute;
+	left:52%;
+	width:46%;
+	top:55%;
+	height:40%;
+}
+#connectB{
+	position:absolute;
+	left:2%;
+	width:46%;
+	top:55%;
+	height:40%;
+}
+
+#log{
+	position: absolute;
+	left:50%;
+	top:320px;
+}

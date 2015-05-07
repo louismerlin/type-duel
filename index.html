@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Type Duel</title>
+		<link rel="stylesheet" href="style/style.css">
+	</head>
+	<body>
+		<h1>Type Duel</h1>
+		<div id="menu">
+			<button type="button" id="connectB" onClick="connect()">1</button>
+			<button type="button" id="hostB" onClick="host()">2</button>
+			<input id="keyH" placeholder="enter key">
+    	<input id="keyC" placeholder="enter key">
+		</div>
+		<div id="game">
+			<input id="gameInput"> //.focus() dans le script!
+		</div>
+		<div id="pause">
+			<h2>PAUSE</h2>
+		</div>
+		<p id="log"></p>
+		<script type="text/javascript" src="js/script.js"></script>
+		<script type="text/javascript" src="js/peer.js"></script>
+		<script type="text/javascript" src="js/online.js"></script>
+	</body>
+</html>
