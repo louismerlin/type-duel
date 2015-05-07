@@ -1,36 +1,23 @@
-var elem = document.getElementById('game'),
-    input = document.getElementById('gameInput'),
+var input = document.getElementById('gameInput'),
     output = document.getElementById('gameOutput'),
     players = [],
     thisPlayer,
     otherPlayer,
     keys = [];
 
+input.value = "";
+output.innerHTML = "";
+
 document.body.addEventListener("keydown", function(e) {
     keys[e.keyCode] = true;
     if (keys[13]) { // ENTER
-        conn.send(input.value);
+        conn.send(input.value.toLowerCase());
+        console.log("CHANGE!");
     } else if (keys[27]) { // ESCAPE
         // PAUSE GAME (NO MORE "game", show "pause")
     }
+    keys[e.keyCode] = false;
 });
-
-// Add element.
-
-for (i = 0; i < 10; i++) {
-    for (j = 0; j < 20; j++) {
-        elements.push({
-            colorOut: "#A0B2A6",
-            colorIn: "#61988E",
-            colorInTouch: "#BCC4DB",
-            width: 20,
-            height: 20,
-            top: 20 * i,
-            left: 20 * j
-        });
-
-    }
-}
 
 // Add players
 
@@ -41,31 +28,6 @@ players.push({
 players.push({
     me: false,
 });
-
-function renderGame() {
-    elements.forEach(function(element) {
-        context.fillStyle = element.colorOut;
-        context.fillRect(element.left, element.top, element.width, element.height);
-        context.fillStyle = element.colorIn;
-        context.fillRect(element.left + 1, element.top + 1, element.width - 2, element.height - 2);
-        if (isInSight(element.left, element.top)) {
-            context.fillStyle = thisPlayer.colorView;
-            context.fillRect(element.left + 1, element.top + 1, element.width - 2, element.height - 2);
-        }
-    });
-
-    players.forEach(function(player) {
-        if (!(player.me == otherPlayer.me && !isInSight(otherPlayer.left, otherPlayer.top))) {
-            context.fillStyle = player.colorOut;
-            context.fillRect(player.left, player.top, player.width, player.height);
-            context.fillStyle = player.color;
-            context.fillRect(player.left + 1, player.top + 1, player.width - 2, player.height - 2);
-        }
-    });
-    if(thisPlayer.left==otherPlayer.left && thisPlayer.top==otherPlayer.top){
-        document.getElementById("explosion").style.display = "initial";
-    }
-}
 
 //Initiate the game
 function initiateGame() {
@@ -78,7 +40,6 @@ function initiateGame() {
             thisPlayer = players[0];
             otherPlayer = players[1];
             conn.send("$11")
-            changeLog();
         } else {
             conn.send("$1");
             turn = "0";
@@ -87,9 +48,6 @@ function initiateGame() {
             thisPlayer = players[1];
             otherPlayer = players[0];
             conn.send("$10");
-            changeLog();
         }
     }
 }
-
-var playCount = 0;
