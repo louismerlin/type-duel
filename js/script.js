@@ -10,8 +10,6 @@ document.body.addEventListener("keydown", function(e) {
         // SEND DATA
     } else if (keys[27]) { // ESCAPE
         // PAUSE GAME (NO MORE "game", show "pause")
-    } else {
-
     }
 });
 

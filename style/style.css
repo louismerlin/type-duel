@@ -22,11 +22,11 @@ p {
 }
 
 #menu{
-	width:200px;
-	height:100px;
+	width:400px;
+	height:200px;
 	left:50%;
   top:30%;
-	margin-left:-100px;
+	margin-left:-200px;
 	position:absolute;
 	background-color:lightgrey;
 }
@@ -37,13 +37,13 @@ p {
 
 button{
 	border: 0px outset;
-    color: #61988E;
-	background-color: #c0ccb7;
+    color: black;
+	background-color: #F5F5F5;
 }
 
 input{
 	border: 0px outset;
-	background-color: #c0ccb7;
+	background-color: #F5F5F5;
 	text-align: center;
 }
 

@@ -11,8 +11,7 @@ function connect() {
     hoster = false;
 
     peer.on('connection', function(iCon) {
-        document.getElementById("menu").style.display = "none";
-        document.getElementById("game").style.display = "initial";
+        hide();
         initiateGame();
         conn = peer.connect(iCon.peer);
         iCon.on('data', function(data) {
@@ -30,8 +29,7 @@ function host() {
     hoster = true;
     conn = peer.connect(key);
     conn.on('open', function() {
-        document.getElementById("menu").style.display = "none";
-        document.getElementById("game").style.display = "initial";
+        hide();
         initiateGame();
     });
     peer.on('connection', function(iCon) {
@@ -41,6 +39,12 @@ function host() {
     })
 }
 
+function hide(){
+  document.getElementById("menu").style.display = "none";
+  document.getElementById("title").style.display = "none";
+  document.getElementById("game").style.display = "initial";
+  document.getElementById("gameInput").focus();
+}
 
 function onReceive(data) {
     if (data == "0" || data == "1") {
