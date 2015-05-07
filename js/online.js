@@ -47,8 +47,13 @@ function hide(){
 }
 
 function onReceive(data) {
-    if (data == "$0" || data == "$1") {
-        turn = data.charAt(1);
+    inputString = "";
+    if (data == "$0"){
+      turn = 0;
+      input.style.display = "none";
+    } else if (data == "$1"){
+        turn = 3;
+        input.style.backgroundColor = "grey";
     } else if (data == "$11") {
         players[0].me = false;
         players[1].me = true;
@@ -61,6 +66,8 @@ function onReceive(data) {
         thisPlayer = players[0];
         otherPlayer = players[1];
     } else {
-        output.innerHTML = data;
+        output.innerHTML = fillOutput(data);
+        befW = data;
+        turn = 1;
     }
 }

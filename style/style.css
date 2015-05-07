@@ -12,14 +12,24 @@ body {
 
 p {
     color: black;
-    font-size:20px;
+    font-size:40px;
+}
+
+input {
+  font-family: "Courier New", Courier, monospace;
 }
 
 #game{
 	text-align: center;
   left:50%;
   top:40%;
+  width:480px;
+  margin-left:-240px;
 	position: absolute;
+}
+
+#gameInput{
+  font-size:40px;
 }
 
 #menu{
@@ -83,4 +93,12 @@ input{
 	position: absolute;
 	left:50%;
 	top:320px;
+}
+
+#signature{
+  position: fixed;
+  bottom: 0;
+  right: 20px;
+  color: grey;
+  font-size: 20px;
 }

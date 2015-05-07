@@ -10,17 +10,18 @@
 		<div id="menu">
 			<button type="button" id="connectB" onClick="connect()">1</button>
 			<button type="button" id="hostB" onClick="host()">2</button>
-			<input id="keyH" placeholder="enter key">
-    	<input id="keyC" placeholder="enter key">
+			<input id="keyH" placeholder="enter key" maxlength="20">
+    	<input id="keyC" placeholder="enter key" maxlength="20">
 		</div>
 		<div id="game">
-			<p id="gameOutput"></p> 
-			<input id="gameInput">
+			<p id="gameOutput"></p>
+			<input id="gameInput" maxlength="20">
 		</div>
 		<div id="pause">
 			<h2>PAUSE</h2>
 		</div>
 		<p id="log"></p>
+		<p id="signature" align="right">Jane&Loum</p>
 		<script type="text/javascript" src="js/script.js"></script>
 		<script type="text/javascript" src="js/peer.js"></script>
 		<script type="text/javascript" src="js/online.js"></script>
