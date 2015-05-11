@@ -28,7 +28,12 @@ document.body.addEventListener("keydown", function(e) {
     } else if (alphabet.indexOf(e.keyCode)!=-1 && turn != 3 && inputString.length<21){
       inputString+=String.fromCharCode(e.keyCode).toLowerCase();
       i = "l" + (inputString.length-1);
-      document.getElementById(i).style.color = "green";
+      if(befW.charAt(inputString.length-1) == inputString.charAt(inputString.length-1)){
+        document.getElementById(i).style.color = "green";
+      } else {
+        document.getElementById(i).style.color = "red";
+      }
+
     } else if (alphabet.indexOf(e.keyCode)!=-1 && turn == 3 && inputString.length<21){
       if(firstPush){
         output.innerHTML = "";
