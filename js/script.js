@@ -29,9 +29,13 @@ document.body.addEventListener("keydown", function(e) {
       inputString+=String.fromCharCode(e.keyCode).toLowerCase();
       i = "l" + (inputString.length-1);
       if(befW.charAt(inputString.length-1) == inputString.charAt(inputString.length-1)){
-        document.getElementById(i).style.color = "green";
+        document.getElementById(i).style.color = "#70AE6E";
+        document.body.style.background = "#C8ED89";
+        setTimeout(function(){ document.body.style.background = "#F5F5F5"; },100);
       } else {
-        document.getElementById(i).style.color = "red";
+        document.getElementById(i).style.color = "#9B1D20";
+        document.body.style.background = "#C52233";
+        setTimeout(function(){ document.body.style.background = "#F5F5F5"; },100);
       }
 
     } else if (alphabet.indexOf(e.keyCode)!=-1 && turn == 3 && inputString.length<21){
@@ -95,4 +99,8 @@ function fillOutput(s){
 
 function clearLTags(){
 
+}
+
+function resetColors(){
+  document.body.style.background = "#F5F5F5";
 }

@@ -49,7 +49,6 @@ function onReceive(data) {
     inputString = "";
     if (data == "$0"){
       turn = 0;
-      input.style.display = "none";
     } else if (data == "$1"){
         turn = 3;
         output.innerHTML = "You go first";
