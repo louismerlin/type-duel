@@ -9,7 +9,9 @@ var inputString = "",
     otherPlayer,
     keyCodes = [],
     alphabet = [],
-    keys = [];
+    keys = [],
+    getBonus = false,
+    tOut = null;
 
 output.innerHTML = "";
 for(i=65;i<91;i++){
@@ -20,31 +22,19 @@ alphabet.push(32);
 document.body.addEventListener("keydown", function(e) {
     keyCodes[e.keyCode] = true;
     if (keyCodes[13]) { // ENTER
-      if(turn == 3 || turn == 1){
+      if((turn == 3 || turn == 1)&&(inputString.length>0)){
         endTurn();
       }
     } else if (keyCodes[27]) { // ESCAPE
         // PAUSE GAME (NO MORE "game", show "pause")
     } else if (alphabet.indexOf(e.keyCode)!=-1 && turn != 3 && inputString.length<21){
-      inputString+=String.fromCharCode(e.keyCode).toLowerCase();
-      i = "l" + (inputString.length-1);
-      if(befW.charAt(inputString.length-1) == inputString.charAt(inputString.length-1)){
-        document.getElementById(i).style.color = "#70AE6E";
-        document.body.style.background = "#C8ED89";
-        setTimeout(function(){ document.body.style.background = "#F5F5F5"; },100);
-      } else {
-        document.getElementById(i).style.color = "#9B1D20";
-        document.body.style.background = "#C52233";
-        setTimeout(function(){ document.body.style.background = "#F5F5F5"; },100);
-      }
-
+      setInput(e.keyCode);
     } else if (alphabet.indexOf(e.keyCode)!=-1 && turn == 3 && inputString.length<21){
       if(firstPush){
         output.innerHTML = "";
         firstPush = false;
       }
-      inputString+=String.fromCharCode(e.keyCode).toLowerCase();
-      output.innerHTML+=String.fromCharCode(e.keyCode).toLowerCase();
+      setInput(e.keyCode);
     }
     keyCodes[e.keyCode] = false;
 });
@@ -83,10 +73,14 @@ function initiateGame() {
 }
 
 function endTurn(){
+  if(inputString.charAt(inputString.length-1) == " "){
+    inputString = inputString.substring(0,inputString.length-1);
+  }
   conn.send(inputString);
   inputString = "";
   turn = 0;
   clearLTags();
+  output.innerHTML = "";
 }
 
 function fillOutput(s){
@@ -98,9 +92,45 @@ function fillOutput(s){
 }
 
 function clearLTags(){
-
+  // No need aparenttly
 }
 
 function resetColors(){
   document.body.style.background = "#F5F5F5";
+}
+
+function setInput(key){
+  if(key == 32) {//SPACE
+    if (inputString.length==0){
+      return;
+    }
+    if(inputString.charAt(inputString.length-1) == " "){
+      return;
+    }
+  }
+  if(turn == 3){
+    inputString+=String.fromCharCode(key).toLowerCase();
+    output.innerHTML+=String.fromCharCode(key).toLowerCase();
+  } else {
+    inputString+=String.fromCharCode(key).toLowerCase();
+    i = "l" + (inputString.length-1);
+    if(befW.charAt(inputString.length-1) == inputString.charAt(inputString.length-1)){
+      document.getElementById(i).style.color = "#70AE6E";
+      if(getBonus){
+        document.body.style.background = "#f7ff93";
+      }else{
+        document.body.style.background = "#C8ED89";
+      }
+      clearTimeout(tOut);
+      getBonus = true;
+      tOut = setTimeout(function(){ document.body.style.background = "#F5F5F5"; getBonus = false;},200);
+    } else {
+      document.getElementById(i).style.color = "#9B1D20";
+      document.body.style.background = "#C52233";
+      clearTimeout(tOut);
+      getBonus = false;
+      tOut = setTimeout(function(){ document.body.style.background = "#F5F5F5";},200);
+    }
+  }
+
 }
