@@ -63,6 +63,8 @@ function onReceive(data) {
         players[1].me = false;
         thisPlayer = players[0];
         otherPlayer = players[1];
+    } else if (data == "$win") {
+      win();
     } else {
         output.innerHTML = fillOutput(data);
         befW = data;

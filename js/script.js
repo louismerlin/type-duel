@@ -11,7 +11,9 @@ var inputString = "",
     alphabet = [],
     keys = [],
     getBonus = false,
-    tOut = null;
+    life = 3,
+    tOut = null
+    gameEnded = false;
 
 output.innerHTML = "";
 for(i=65;i<91;i++){
@@ -21,6 +23,9 @@ alphabet.push(32);
 
 document.body.addEventListener("keydown", function(e) {
     keyCodes[e.keyCode] = true;
+    if(gameEnded){
+      return;
+    }
     if (keyCodes[13]) { // ENTER
       if((turn == 3 || turn == 1)&&(inputString.length>0)){
         endTurn();
@@ -99,6 +104,29 @@ function resetColors(){
   document.body.style.background = "#F5F5F5";
 }
 
+function removeLife(){
+  life--;
+  h = "heart"+life;
+  document.getElementById(h).src="eheart.png";
+  if(life==0)
+    lose();
+}
+
+function lose(){
+  output.innerHTML="YOU LOSE";
+  conn.send("$win");
+  stopGame();
+}
+
+function win(){
+  output.innerHTML="YOU WIN";
+  stopGame();
+}
+
+function stopGame(){
+  gameEnded=true;
+}
+
 function setInput(key){
   if(key == 32) {//SPACE
     if (inputString.length==0){
@@ -127,6 +155,7 @@ function setInput(key){
     } else {
       document.getElementById(i).style.color = "#9B1D20";
       document.body.style.background = "#C52233";
+      removeLife();
       clearTimeout(tOut);
       getBonus = false;
       tOut = setTimeout(function(){ document.body.style.background = "#F5F5F5";},200);
