@@ -128,6 +128,8 @@ function stopGame(){
 }
 
 function setInput(key){
+  if(conn==null)
+    return;
   if(key == 32) {//SPACE
     if (inputString.length==0){
       return;

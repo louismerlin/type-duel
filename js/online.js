@@ -45,6 +45,17 @@ function hide(){
   document.getElementById("game").style.display = "initial";
 }
 
+document.getElementById('keyH').onkeypress = function(e){
+  if (e.keyCode == 13){
+    host();
+  }
+}
+document.getElementById('keyC').onkeypress = function(e){
+  if (e.keyCode == 13){
+    connect();
+  }
+}
+
 function onReceive(data) {
     inputString = "";
     if (data == "$0"){
